@@ -50,6 +50,10 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
+ *  NioEventLoop 并不是一个纯粹的 I/O 线程，它除了负责 I/O 的读写之外，还兼顾处理以下两类任务
+ *  普通 Task：通过调用 NioEventLoop 的 execute(Runnable task) 方法实现
+ *  定时任务：通过调用 NioEventLoop 的 schedule(Runnable command, long delay, TimeUnit unit) 方法实现
+ *
  * {@link SingleThreadEventLoop} implementation which register the {@link Channel}'s to a
  * {@link Selector} and so does the multi-plexing of these in the event loop.
  *
